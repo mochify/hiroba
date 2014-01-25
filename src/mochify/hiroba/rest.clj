@@ -54,6 +54,7 @@
          "?v=" current)))
 
 (defn get
+  "Performs an HTTP GET of a URI, with optional query string parameters."
   ([^String uri]
     (io! (json/decode (:body @(http/get uri {:accept :json :throw-exceptions false})) true)))
   ([^String uri &{:as params}]
