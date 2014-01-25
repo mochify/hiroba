@@ -58,7 +58,7 @@ Hiroba is developed against Clojure 1.5.0 and newer. Use of the latest version i
 
 ## Continuous Integration Status
 
-[![Continuous Integration status](https://secure.travis-ci.org/clojurewerkz/{{name}}.png)](http://travis-ci.org/clojurewerkz/{{name}})
+[![Continuous Integration status](https://secure.travis-ci.org/mochify/hiroba.png)](http://travis-ci.org/mochify/hiroba)
 
 
 ## Development
