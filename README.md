@@ -68,7 +68,7 @@ Hiroba uses [Leiningen
 sure you have it installed and then run tests against supported
 Clojure versions using
 
-    lein2 all test
+    lein2 test
 
 Then create a branch and make your changes on it. Once you are done
 with your changes and all tests pass, submit a pull request on GitHub.
