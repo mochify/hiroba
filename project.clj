@@ -10,6 +10,7 @@
                  [environ             "0.4.0"]]
   :min-lein-version "2.0.0"
   :global-vars {*warn-on-reflection* true}
-  :plugins [[codox "0.6.6"]]
+  :plugins [[codox "0.6.6"]
+            [lein-environ "0.4.0"]]
   :codox {:sources ["src"]
           :output-dir "doc/api"})
