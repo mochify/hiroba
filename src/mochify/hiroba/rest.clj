@@ -22,6 +22,8 @@
   ([protocol uri version] (FoursquareApiEndpoint. protocol uri version)))
 
 (def ^{:dynamic true} *api-endpoint* (make-api-endpoint "https" "api.foursquare.com" "v2"))
+(def ^{:dynamic true} *client-id* nil)
+(def ^{:dynamic true} *client-secret* nil)
 
 (defn create-uri
   "Creates a URI from a FoursquareApiEndpoint"
