@@ -4,4 +4,11 @@ script: lein2 test
 
 notifications:
    email: false
-   irc: "chat.freenode.net#mochify"
+   irc: 
+      channels: 
+         - "chat.freenode.net#mochify"
+      use_notice: true
+      skip_join: true
+      template:
+         - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+         - "Commit view : %{compare_url}"
