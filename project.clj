@@ -14,4 +14,5 @@
   :plugins [[codox "0.6.6"]
             [lein-environ "0.4.0"]]
   :codox {:sources ["src"]
-          :output-dir "doc/api"})
+          :output-dir "doc/api"}
+  :profiles {:compile {:aot [#"mochify.*"]}})
