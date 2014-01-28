@@ -59,3 +59,8 @@
     (io! (json/decode (:body @(http/get uri {:accept :json :throw-exceptions false})) true)))
   ([^String uri &{:as params}]
     (io! (json/decode (:body @(http/get uri params)) true))))
+
+(defn post
+  "Performs an HTTP POST of a URI, with parameters."
+  [^String uri &{:as options}]
+  (io! (json/decode (:body @(http/post uri options)) true)))

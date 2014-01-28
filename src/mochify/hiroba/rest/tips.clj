@@ -2,11 +2,21 @@
   {:author "William Lee (birryree"}
   (:require [mochify.hiroba.rest :as rest]))
 
+(defn details
+  "Get the details of a tip, including which users (especially friends) have marked the tip a to-do item.
+
+  Required Parameters:
+
+    * tip-id (string) - ID of the tip to detail.
+  "
+  ([tip-id]
+    (rest/get (rest/userless-uri "tips" tip-id))))
+
+
 (defn likes
   "Returns friends and a total count of users who have liked a tip."
   [tip-id]
-  (let [result (rest/get (rest/userless-uri "tips" tip-id "likes"))]
-    result))
+    (rest/get (rest/userless-uri "tips" tip-id "likes")))
 
 (defn listed
   "The list that this tip appears on.
@@ -17,11 +27,11 @@
     * :edited (string) - Can be 'created', 'edited', 'followed', 'friends', or 'other'.
                         Only 'other' is supported if the oauth_token is not supplied.
   "
-  [tip-id &{:as params}]
-  (let [result (rest/get (rest/userless-uri "tips" tip-id "listed"))]
-    result))
+  ([tip-id &{:as params}]
+    (rest/get (rest/userless-uri "tips" tip-id "listed"))))
 
-(defn saved
+(defn saves
   "Returns friends and a total count of users who have saved this tip."
-  []
-  (+ 3 3))
+  ([tip-id]
+    (rest/get (rest/userless-uri "tips" tip-id "saves"))))
+
