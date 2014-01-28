@@ -23,7 +23,7 @@
 
   Foursquare recommends only downloading this list once per session for an application,
   and only caching data for no more than a week."
-  ([] (rest/get (rest/userless-uri "venues" "categories")))
+  ([] (rest/get (rest/userless-uri "venues" "categories"))))
 
 (defn trending
   "Returns a list of venues near a specified location with the most people currently checked in.
@@ -69,7 +69,7 @@
     * venue-id (string) - The venue ID to get likes for.
   "
   ([venue-id]
-    (rest/get (rest/userless-uri "venues" venue-id "likes")))
+    (rest/get (rest/userless-uri "venues" venue-id "likes"))))
 
 
 (defn links

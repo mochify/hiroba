@@ -43,7 +43,7 @@
       * :oauth_token (string) - OAuth2 token for the user
   "
   ([& {:as params}]
-    (rest/get (rest/authenticated-uri "users" "search") :query-params params))
+    (rest/get (rest/authenticated-uri "users" "search") :query-params params)))
 
 (defn badges
   "Returns a user's badges"
@@ -84,7 +84,7 @@
     * :ll (geographic coordinate) - Location of the user. Necessary if you specify :group 'suggested'
   "
   ([user &{:as params}]
-    (rest/get (rest/authenticated-uri "users" user "lists") :query-params params))
+    (rest/get (rest/authenticated-uri "users" user "lists") :query-params params)))
 
 (defn mayorships
   "Returns a user's mayorships"
