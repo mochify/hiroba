@@ -1,4 +1,4 @@
-(defproject com.mochify/hiroba "0.1.0-alpha"
+(defproject com.mochify/hiroba "0.1.0-alpha2-SNAPSHOT"
   :description "A minimalistic Clojure library for the Foursquare REST API"
   :url "http://mochify.github.io/hiroba"
   :license {:name "Apache License, Version 2.0"
