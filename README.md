@@ -2,6 +2,11 @@
 
 Hiroba is a minimalistic Clojure client for the Foursquare REST API.
 
+This is not the first Clojure client for Foursquare, but it strives to be the best documented and most complete. The other pre-existing Clojure Foursquare clients available are:
+
+* [trentonstrong/foursquare-clj](https://github.com/trentonstrong/foursquare-clj) - Seems to be abandoned, does not implement all endpoints, and is undocumented.
+* [transistorize/foursquare-clj](https://github.com/transistorize/foursquare-clj) - This is an abandoned project that implements a single endpoint, is not a library, and has no documentation.
+
 
 ## Project Goals
 
@@ -16,6 +21,9 @@ Hiroba is a minimalistic Clojure client for the Foursquare REST API.
 
 Hiroba is in its infancy. It is a new project, with only minimal use in production and testing environments at this point. The API is subject to change at any time, but will stabilize over time.
 
+## Recent changes
+
+Please see the [most recent changelog](https://github.com/mochify/hiroba/blob/master/CHANGELOG.md).
 
 ## Artifacts
 

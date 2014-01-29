@@ -8,7 +8,8 @@
                  [http-kit            "2.1.16"]
                  [clj-time            "0.6.0"]
                  [environ             "0.4.0"]
-                 [http-kit.fake       "0.2.1"]]
+                 [http-kit.fake       "0.2.1"]
+                 [clj-oauth           "1.4.1"]]
   :min-lein-version "2.0.0"
   :global-vars {*warn-on-reflection* true}
   :plugins [[codox "0.6.6"]
