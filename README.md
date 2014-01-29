@@ -41,7 +41,7 @@ definition to your `pom.xml`:
 
 With Leiningen:
 
-    [com.mochify/hiroba "0.1.0-SNAPSHOT"]
+    [com.mochify/hiroba "0.1.0-alpha"]
 
 
 With Maven:
