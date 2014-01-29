@@ -55,9 +55,7 @@ With Maven:
 
 ## Documentation & Examples
 
-Our documentation site is not yet live, sorry.
-
-
+For the latest documentation, [please see Hiroba's documentation site](http://mochify.github.io/hiroba).
 
 ## Supported Clojure versions
 
