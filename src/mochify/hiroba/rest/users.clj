@@ -113,3 +113,38 @@
   "
   ([user &{:as params}]
     (rest/get (rest/authenticated-uri "users" user "venuehistory") :query-params params)))
+
+(defn approve
+  "Approve a friend request from another user."
+  ([user oauth-token]
+    (rest/post (rest/authenticated-uri "users" user "approve") :query-params {:oauth_token oauth-token})))
+
+(defn deny
+  "Denies a pending friend request from another user."
+  ([user oauth-token]
+    (rest/post (rest/authenticated-uri "users" user "deny") :query-params {:oauth_token oauth-token})))
+
+(defn setpings
+  "Changes whether a user will receive pings (phone notifications) when a specified user checks in.
+
+  Required Parameters:
+
+    * user (string) - A User ID for a friend.
+    * oauth-token (string) - The OAuth token of an authenticated user.
+    * receive-pings (bool) - True if you should receive pings from the specified user, False otherwise.
+  "
+  ([user oauth-token receive-pings]
+    (rest/post (rest/authenticated-uri "users" user "setpings") :query-params {:oauth_token oauth-token :value receive-pings})))
+
+(defn unfriend
+  "Cancels a relationship between the acting user and a specified user.
+
+  Removes a friend, unfollows a celebrity, or rejects a pending friend request.
+
+  Required Parameters:
+
+    * user (string) - The User ID to unfriend
+    * oauth-token (string) - The Acting User's OAuth token
+  "
+  ([user oauth-token]
+    (rest/post (rest/authenticated-uri "users" user "unfriend") :query-params {:oauth_token oauth-token})))
