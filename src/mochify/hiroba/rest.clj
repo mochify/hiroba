@@ -12,7 +12,7 @@
 (defrecord FoursquareApiEndpoint
   [protocol uri version])
 
-(def ^{:const true} current (unparse (formatters :basic-date) (now)))
+
 
 (def ^{:const true} slash "/")
 (def ^{:const true} encoding "UTF-8")
@@ -21,9 +21,10 @@
   ([protocol uri] (FoursquareApiEndpoint. protocol uri nil))
   ([protocol uri version] (FoursquareApiEndpoint. protocol uri version)))
 
+(def ^{:dynamic true} *api-date* (unparse (formatters :basic-date) (now)))
 (def ^{:dynamic true} *api-endpoint* (make-api-endpoint "https" "api.foursquare.com" "v2"))
-(def ^{:dynamic true} *client-id* nil)
-(def ^{:dynamic true} *client-secret* nil)
+(def ^{:dynamic true} *client-id* (env/env :foursquare-client-id))
+(def ^{:dynamic true} *client-secret* (env/env :foursquare-client-secret))
 
 (defn create-uri
   "Creates a URI from a FoursquareApiEndpoint"
@@ -40,20 +41,20 @@
   Instead, it will read your Foursquare Client ID and Fourquare Client Secret from the environment.
   "
   [& segments]
-  (let [date current]
+  (let [date *api-date*]
     (str (create-uri *api-endpoint* segments)
-         "?" "client_id=" (env/env :foursquare-client-id)
-         "&" "client_secret=" (env/env :foursquare-client-secret)
-         "&" "v=" current)))
+         "?" "client_id=" *client-id*
+         "&" "client_secret=" *client-secret*
+         "&" "v=" date)))
 
 (defn authenticated-uri
   "Create a URI without the client ID or client secret. Most likely, you will have to provide
   the OAuth2 token once you use this URI with the Foursquare API."
   [& segments]
   (let
-    [date current]
+    [date *api-date*]
     (str (create-uri *api-endpoint* segments)
-         "?v=" current)))
+         "?v=" date)))
 
 (defn get
   "Performs an HTTP GET of a URI, with optional query string parameters."
