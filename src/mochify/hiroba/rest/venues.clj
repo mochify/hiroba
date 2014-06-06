@@ -148,3 +148,65 @@
   "
   ([venue-id &{:as params}]
     (rest/get (rest/userless-uri "venues" venue-id "tips"))))
+
+(defn search
+  "Returns a list of venues near the current location, optionally matching a search term.
+
+  Optional Parameters:
+
+    * ll (string) - Latitude and longitude of the user's location.
+                    Required unless near is provided.
+                    Optional if using intent=global
+    * near (string) - A string naming a place in the world.
+                      Required unless ll is provided.
+    * :llAcc - accuracy of the latitude/longitude, in meters.
+    * :alt - Altitude of the user's location, in meters.
+    * :altAcc - Vertical accuracy of the user's location, in meters.
+    * :query (string) - A search term to be applied against venue names.
+    * :limit (int) - Number of results to return, up to 50.
+    * :intent (string) - Intent in performing the search.
+                         If no value is specified, defaults to checkin
+    * :radius (int) - Limit results to venues within this many meters of the specified location.
+    * :sw - With ne, limits results to the bounding quadrangle defined by the latitude and longitude given by sw as its south-west corner, and ne as its north-east corner.
+    * :ne - See sw.
+    * :categoryId (string) - A comma separated list of categories to limit results to.
+    * :url (string) - A third-party URL which we will attempt to match against our map of venues to URLs.
+    * :providerid (string) - Identifier for a known third party that is part of our map of venues to URLs, used in conjunction with linkedId.
+    * :linkedid (string) - 1002207971611 Identifier used by third party specified in providerId, which we will attempt to match against our map of venues to URLs."
+
+  ([&{:as params}]
+     (rest/get (rest/userless-uri "venues" "search") :query-params params)))
+
+(defn explore
+  "Returns a list of recommended venues near the current location.
+
+  Optional Parameters:
+
+    * ll (string) - Latitude and longitude of the user's location.
+                    Required unless near is provided.
+    * near (string) - A string naming a place in the world.
+                      Required unless ll is provided.
+    * :llAcc - accuracy of the latitude/longitude, in meters.
+    * :alt - Altitude of the user's location, in meters.
+    * :altAcc - Vertical accuracy of the user's location, in meters.
+    * :radius (int) - Limit results to venues within this many meters of the specified location.
+    * :section (string) - One of food, drinks, coffee, shops, arts, outdoors, sights, trending or specials, nextVenues (venues frequently visited after a given venue), or topPicks (a mix of recommendations generated without a query from the user).
+                          Choosing one of these limits results to venues with the specified category or property.
+    * :query (string) - A term to be searched against a venue's tips, category, etc.
+                        The query parameter has no effect when a section is specified.
+    * :limit (int) - Number of results to return, up to 50.
+    * :offset (int) - Used to page through results.
+    * :novelty (string) - Pass new or old to limit results to places the acting user hasn't been or has been, respectively.
+    * :friendVisits (string) - Pass visited or notvisited to limit results to places the acting user's friends have or haven't been, respectively.
+    * :time (string) - Pass any to retrieve results for any time of day.
+    * :day (string) - Pass any to retrieve results for any day of the week.
+    * :venuePhotos (int) - Boolean flag to include a photo in the response for each venue, if one is available. Default is 0.
+    * :lastVenue (string) - A venue ID to use in combination with the intent=nextVenues parameter, which returns venues users often visit after a given venue.
+    * :openNow (int) - Boolean flag to only include venues that are open now.
+    * :sortByDistance (int) - Boolean flag to sort the results by distance instead of relevance.
+    * :price (string) - Comma separated list of price points.
+    * :saved (int) - Boolean flag to only include venues that the user has saved on their To-Do list or to another list.
+    * :specials (int) - Boolean flag to only include venues that have a special."
+
+  ([&{:as params}]
+     (rest/get (rest/userless-uri "venues" "explore") :query-params params)))
